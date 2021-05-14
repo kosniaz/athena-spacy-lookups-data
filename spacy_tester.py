@@ -56,7 +56,7 @@ if debug_mode:
     for_debug = "spacy_test_ground/"
 else:
     for_debug = ""
-path_to_tables = "spacy-lookups-data/spacy_lookups_data/data/"
+path_to_tables = "spacy_lookups_data/data/"
 
 name_of_tables = ["el_lemma_exc.json",
                     "el_lemma_index.json",
