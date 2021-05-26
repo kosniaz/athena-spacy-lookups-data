@@ -34,3 +34,19 @@ if len(our_mistakes) == 0:
 else:
     print("We've made different errors.")
     print("See mistake.csv for more information.")
+
+    mistake_file = open("mistake.csv", "w")
+
+    for mistake in our_mistakes:
+        line_to_write = mistake + "," + "our" + "\n"
+        mistake_file.write(line_to_write)
+    
+    for mistake in their_mistakes:
+        line_to_write = mistake + "," + "their" + "\n"
+        mistake_file.write(line_to_write)
+
+    for mistake in common_mistakes:
+        line_to_write = mistake + "," + "common" + "\n"
+        mistake_file.write(line_to_write)
+
+    mistake_file.close()
