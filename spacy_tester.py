@@ -5,11 +5,11 @@ This script is made for handling - testing a custom spacy lemmatizer.
 It will handle one file named: "lemmatizer_test.json" that is a json.
 This file must have the following structure (remember python's dictionaries)
 
-{"key_1": ["POS_TAG_1","TRUE_VALUE_1],
-"key_2": ["POS_TAG_2","TRUE_VALUE_2],
+{"key_1": ["POS_TAG_1","LEMMA_OF_KEY_1],
+"key_2": ["POS_TAG_2","LEMMA_OF_KEY_2],
 ...
 ...
-"key_N": ["POS_TAG_N","TRUE_VALUE_N]}
+"key_N": ["POS_TAG_N","LEMMA_OF_KEY_N]}
 
 DISCLAIMER: the second true value will be lowercased by default from spaCy.
 Keep it that way.
@@ -99,7 +99,7 @@ for count,test_word in enumerate(testing_keys):
 
     pos_outWord = testing_dict[test_word]
     pos_tag = pos_outWord[0]
-    true_output = pos_outWord[1]
+    true_lemma = pos_outWord[1]
 
     doc = nlp.make_doc(test_word)
 
@@ -111,11 +111,13 @@ for count,test_word in enumerate(testing_keys):
         else:
             doc = proc(doc)
 
-    output_list[count].append(true_output)
+    output_list[count].append(true_lemma)
     output_list[count].append(doc[0].lemma_)
 
 #write the file
 output_file = open("lemmatizer_test_output.csv","w")
+# set csv header
+output_file.write("{},{},{},{}\n".format("Key","True Lemma","Computed Lemma","Match"))
 
 for test_case in output_list:
     if test_case[1] == test_case[2]:
