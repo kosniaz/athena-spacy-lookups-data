@@ -31,6 +31,21 @@ print("Number of common mistakes: {}".format(len(common_mistakes)))
 if len(our_mistakes) == 0:
     total_mistakes = max(len(our_mistakes),len(their_mistakes)) + len(common_mistakes)
     print("Improvement: {:.1f}%".format(abs(len(their_mistakes) - len(our_mistakes))/total_mistakes * 100))
+    print("For more info, check the result.txt")
 else:
     print("We've made different errors.")
-    print("See mistake.csv for more information.")
+    print("See result.txt for more information.")
+
+mistake_file = open("result.txt", "w")
+
+for mistake in common_mistakes:
+    temp_line = mistake + "," + "common" + "\n"
+    mistake_file.writelines(temp_line)
+
+for mistake in our_mistakes:
+    temp_line = mistake + "," + "our" + "\n"
+    mistake_file.writelines(temp_line)
+
+for mistake in their_mistakes:
+    temp_line = mistake + "," + "spacy" + "\n"
+    mistake_file.writelines(temp_line)
