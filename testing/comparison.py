@@ -1,5 +1,5 @@
 ours = open("lemmatizer_test_output.csv", "r")
-theirs = open("lemmatizer_test_output_theirs.csv", "r")
+theirs = open("lemmatizer_test_output_spacy.csv", "r")
 
 our_mistakes = []
 their_mistakes = []
