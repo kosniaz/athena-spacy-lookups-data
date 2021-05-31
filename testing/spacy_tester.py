@@ -27,7 +27,6 @@ The fourth will be an indicator that will have match, failed if there was the sa
     original - test lemmatized and spaCy lemmatized words.
 """
 from logging import debug
-from numpy.core.einsumfunc import _parse_possible_contraction
 import spacy
 import json
 
@@ -56,7 +55,7 @@ if debug_mode:
     for_debug = "spacy_test_ground/"
 else:
     for_debug = ""
-path_to_tables = "spacy_lookups_data/data/"
+path_to_tables = "../spacy_lookups_data/data/"
 
 name_of_tables = ["el_lemma_exc.json",
                     "el_lemma_index.json",
